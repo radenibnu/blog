@@ -15,7 +15,7 @@ class frontendController extends Controller
      */
     public function index()
     {
-        $datanews = newsModel::all();
+        $datanews = newsModel::paginate(20);
         return view('frontend')->with([
             'datanews' => $datanews
         ]);

@@ -56,7 +56,7 @@ class HomeController extends Controller
 
         newsModel::create($datanews);
 
-        return view('home');
+        return redirect()->to('home');
     }
 
     /**
