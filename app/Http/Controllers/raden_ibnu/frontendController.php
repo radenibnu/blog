@@ -1,43 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\raden_ibnu;
 
+use App\Http\Controllers\Controller;
 use App\newsModel;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class frontendController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Display a listing of the resource.
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $news = newsModel::all();
-        return view('home')->with([
-            'news' => $news
+        $datanews = newsModel::all();
+        return view('frontend')->with([
+            'datanews' => $datanews
         ]);
     }
 
-       /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('create');
+        //
     }
 
     /**
@@ -48,15 +39,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $datanews = $request->all();
-        $datanews['image'] = 'storage/' . $request->file('image')->store(
-            'assets/image',
-            'public'
-        );
-
-        newsModel::create($datanews);
-
-        return view('home');
+        //
     }
 
     /**
